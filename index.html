@@ -3,75 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobility Bias Mapper</title>
+    <title>Mobility Data Bias Mapper</title>
     <link rel="stylesheet" href="./css/style.css">
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <!-- Leaflet js -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <script src="./js/leaflet-side-by-side.js"></script>
     <script src="./js/L.Map.Sync.js"></script>
 
 </head>
 
 <body>
-    <div class="container">
-    
-    <div class="item header">
-        <h2>Mobile Location Data Bias Mapper</h2>
+    <div class="titlebar">
+        <button id="toggleButton"><div class="sidebarButton"><img src="./img/toggle-button.png" style="height: 1.5rem; padding-right:0.5rem;">Sidebar</div></button> 
+        <h2 class="title">Mobile Location Data Bias Mapper</h2>
+    </div>
+    <div class="dashboard">
+        <script>
+            const toggleButton = document.getElementById('toggleButton');
+            const dashboard = document.querySelector('.dashboard');
+            toggleButton.addEventListener('click', () => {
+                dashboard.classList.toggle('closed');
+            });
+        </script>
+
+        <aside class="sidebar">
+            Sidebar
+        </aside>
+
+        <main class="main-content">
+            <div class="subdash">
+                <div class="subheader1">
+                    <p>Left Map:</p>
+                    <div class="dropdown">
+                        <button class="dropbtn">Select a layer</button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subheader2">
+                    <p>Right Map:</p>
+                    <div class="dropdown">
+                        <button class="dropbtn">Select a layer</button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item item1">
+                    <div id='map1'></div>
+                    <script>
+                        var map1 = L.map('map1').setView([39.5, -99], 4);
+                        var osmLayer1 = L.tileLayer('https://tile-a.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+                            attribution: '© Data <a href="https://openstreetmap.org">OpenStreetMap</a>'
+                        }).addTo(map1);
+                    </script>
+                </div>
+
+                <div class="item item2">
+                    <div id='map2'></div>
+                    <script>
+                        var map2 = L.map('map2').setView([39.5, -99], 4);
+                        var osmLayer2 = L.tileLayer('https://tile-a.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+                            attribution: '© Data <a href="https://openstreetmap.org">OpenStreetMap</a>'
+                        }).addTo(map2);
+                        map1.sync(map2);
+                        map2.sync(map1);
+                    </script>
+                </div>
+
+
+                <div class="item item3">
+                    Left plot
+                </div>
+
+                <div class="item item4">
+                    Right plot
+                </div>
+            </div>
+        </main>
     </div>
 
-    <div class="item item1">
-    <div id='map1'></div>
-
-    <script>
-    var map1 = L.map('map1').setView([39.5, -99], 4);
-
-    var osmLayer1 = L.tileLayer('https://tile-a.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-        attribution: '© Data <a href="https://openstreetmap.org">OpenStreetMap</a>'
-    }).addTo(map1);
-    </script>
-    </div>
-
-    <div class="item item2">
-    <div id='map2'></div>
-
-    <script>
-    var map2 = L.map('map2').setView([39.5, -99], 4);
-
-    var osmLayer2 = L.tileLayer('https://tile-a.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-        attribution: '© Data <a href="https://openstreetmap.org">OpenStreetMap</a>'
-    }).addTo(map2);
-    map1.sync(map2);
-    map2.sync(map1);
-    </script>
-    </div>
-
-    <div class="item item3">
-    <div id='map3'></div>
-
-    <script>
-    var map3 = L.map('map3').setView([39.5, -99], 4);
-
-    var osmLayer3 = L.tileLayer('https://tile-a.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-        attribution: '© Data <a href="https://openstreetmap.org">OpenStreetMap</a>'
-    }).addTo(map3);
-    </script>
-    </div>
-
-    <div class="item item4">
-    <div id='map4'></div>
-
-    <script>
-    var map4 = L.map('map4').setView([39.5, -99], 4);
-
-    var osmLayer4 = L.tileLayer('https://tile-a.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-        attribution: '© Data <a href="https://openstreetmap.org">OpenStreetMap</a>'
-    }).addTo(map4);
-    </script>
-    </div>
-
-</div>
 </body>
 </html>
