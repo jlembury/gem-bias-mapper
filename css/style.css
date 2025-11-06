@@ -3,68 +3,47 @@
         padding: 0;
     }
 
-    .dropdown {
-        position: relative;
-        width: 80%;
-        z-index: 1;
+    h2 {
+        font-family: 'Rokkitt', 'Roboto', sans-serif;
     }
 
-    /* Style the dropdown button */
-    .dropbtn {
-        background-color: white;
-        color: black;
-        border: 1px;
-        border-color: #333;
-        border-style: solid;
-        cursor: pointer;
-        padding: 0.5rem;
-        margin-left: 0.5rem;
-        width: 100%;
-        box-sizing: border-box; 
-        align-items: left;
-    }
-
-    /* Dropdown content */
-    .dropdown-content {
-        display: none;
-        background-color: #f9f9f9;
-        min-width: 200px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    }
-
-    /* Links inside dropdown content */
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-    /* Change color of dropdown links on hover */
-    .dropdown-content a:hover {
-        background-color: #f1f1f1;
-    }
-
-    /* Show the dropdown content on hover */
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-
-    /* Change background color of dropdown button on hover */
-    .dropdown:hover .dropbtn {
-        background-color: #f1f1f1;
+    p {
+        font-family: 'Roboto', sans-serif;
     }
 
     .titlebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
         display: flex;
         align-items: center;
+        z-index: 2;
+        width: 100%;
+        box-sizing: border-box; 
+        border-bottom: 1px solid darkgray;
+        background-color: white;
+        background-image:
+        repeating-linear-gradient(22.5deg, transparent, transparent 2px, rgba(75, 85, 99, 0.06) 2px, rgba(75, 85, 99, 0.06) 3px, transparent 3px, transparent 8px),
+        repeating-linear-gradient(67.5deg, transparent, transparent 2px, rgba(107, 114, 128, 0.05) 2px, rgba(107, 114, 128, 0.05) 3px, transparent 3px, transparent 8px),
+        repeating-linear-gradient(112.5deg, transparent, transparent 2px, rgba(55, 65, 81, 0.04) 2px, rgba(55, 65, 81, 0.04) 3px, transparent 3px, transparent 8px),
+        repeating-linear-gradient(157.5deg, transparent, transparent 2px, rgba(31, 41, 55, 0.03) 2px, rgba(31, 41, 55, 0.03) 3px, transparent 3px, transparent 8px);
+
     }
 
     .sidebarButton {
+        position: fixed;
+        top: 3.2rem;
+        left: 0.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        max-height: 1.5rem;
+        z-index: 3;
+    }
+
+    .icon {
+        height: 1.5rem; 
+        padding-right:0.5rem;
     }
 
     .title {
@@ -76,19 +55,40 @@
         grid-template-columns: 30% 70%;
         transition: grid-template-columns 0.3s;
         width: 100%;
-        z-index: 1;
     }
 
     .sidebar {
-        background-color: #333;
-        color: white;
+        position: relative;
+        top: 4rem;
+        background-color: rgb(250, 250, 250);
+        color: black;
         margin-right: 0.5rem;
         padding: 1rem;
+        border: 1px solid darkgray;
+        z-index: 0;
+    }
+
+    .sidebar-link {
+        display: flex; 
+        align-items: center; 
+        justify-content: left;
+        
+    }
+
+    .sidebar-link a {
+        color: inherit; /* Inherits the color from the parent element */
+        text-decoration: none; /* Removes the default underline */
+    }
+
+    .sidebar-link a:hover {
+        display: block;
     }
 
     .main-content {
+        position: relative;
+        top: 5rem;
         background-color: white;
-        z-index: 1;
+        z-index: 0;
     }
 
     .closed .dashboard {
@@ -106,7 +106,7 @@
     .subdash {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 2rem 1fr 1fr;
+        grid-template-rows: 1.5rem 1fr 1fr;
         grid-template-areas: 
             "subheader1 subheader2"
             "item1 item2"
@@ -119,8 +119,7 @@
         display: flex;
         justify-content: left;
         align-items: center;
-        max-height: 1.5rem;
-        padding-left: 1.5rem;
+        padding-left: 0.5rem;
     }
 
     .subheader2 {
@@ -128,8 +127,11 @@
         display: flex;
         justify-content: left;
         align-items: center;
-        max-height: 1.5rem;
-        padding-left: 1.5rem;
+        padding-left: 0.5rem;
+    }
+
+    .dropdown {
+        padding-left: 0.5rem;
     }
 
     .item1 {
@@ -152,24 +154,34 @@
         height: 20rem;  
         max-height: 100%;  
         max-width: 100%;
+        border: 1px solid darkgray;
     }
 
     #map2 {
         height: 20rem;  
         max-height: 100%;  
         max-width: 100%;
+        border: 1px solid darkgray;
     }
 
-    #map3 {
-        height: 20rem;  
-        max-height: 100%;  
-        max-width: 100%;
-    }
+    @media (max-width: 600px) {
+        .dashboard {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto;
+        }
 
-    #map4 {
-        height: 20rem;  
-        max-height: 100%;  
-        max-width: 100%;
+        .subdash {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto auto auto auto auto;
+            grid-template-areas:
+                "subheader1"
+                "item1"
+                "subheader2"
+                "item2"
+                "item3"
+                "item4";
+            gap: 0.2rem;
+        }
     }
 
 

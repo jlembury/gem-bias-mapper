@@ -12,13 +12,18 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="./js/L.Map.Sync.js"></script>
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rokkitt:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
     <div class="titlebar">
-        <button id="toggleButton"><div class="sidebarButton"><img src="./img/toggle-button.png" style="height: 1.5rem; padding-right:0.5rem;">Sidebar</div></button> 
         <h2 class="title">Mobile Location Data Bias Mapper</h2>
     </div>
+    <button id="toggleButton" class="sidebarButton"><img src="./img/toggle-button.png" class="icon">Info Panel</button> 
     <div class="dashboard">
         <script>
             const toggleButton = document.getElementById('toggleButton');
@@ -29,7 +34,15 @@
         </script>
 
         <aside class="sidebar">
-            Sidebar
+            <div style="display: flex; align-items: center;"><img src="./img/crystal.png" style="height: 2rem; padding-right: 0.2rem;"><p><b>Geospatial Ethics in Motion (GEM)</b></p></div>
+            <p style="margin-top: 0;">The <em>GEM</em> project investigates how data and algorithmic biases shape our understanding of human mobility, aiming to inform decision-making that better reflects the lived experiences of diverse communities.</p>
+            <p>This dashboard explores how sampling bias in mobile location data varies across space and sociodemographic dimensions.</p>
+            <p style="padding-top: 1rem;"><b>Dashboard Tutorial</b> (2 min.)</p>
+            <p>[Embed YT video here.]</p>
+            <p style="padding-top: 1rem; margin-bottom: 0;"><b>Links</b></p>
+            <div class="sidebar-link"><a href="" target="_blank" title="Go to GitHub"><img src="./img/github.png" class="icon"></a><a href="" target="_blank" title="Go to Github"><p>Visit GEM on Github</p></a></div>
+            <div class="sidebar-link" style="padding-bottom: 2rem;"><a href="" target="_blank" title="Contact form"><img src="./img/comment.png" class="icon"></a><a href="" target="_blank" title="Contact form"><p>Contact the GEM Team</p></a></div>
+            <p style="position:absolute; bottom: 0; justify-self: center;">&copy;2025 Jessica Embury</p>
         </aside>
 
         <main class="main-content">
@@ -37,24 +50,24 @@
                 <div class="subheader1">
                     <p>Left Map:</p>
                     <div class="dropdown">
-                        <button class="dropbtn">Select a layer</button>
-                        <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
+                        <select id="map1-data" style="padding: 0.2rem;">
+                            <option value="option0">Select a data layer (Default: Sampling rate)</option>
+                            <option value="option1">option 1</option>
+                            <option value="option2">option 2</option>
+                            <option value="option3">option 3</option>
+                        </select>
                     </div>
                 </div>
 
                 <div class="subheader2">
                     <p>Right Map:</p>
                     <div class="dropdown">
-                        <button class="dropbtn">Select a layer</button>
-                        <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
+                        <select id="map2-data" style="padding: 0.2rem;">
+                            <option value="option0">Select a data layer (Default: Population density)</option>
+                            <option value="option1">option 1</option>
+                            <option value="option2">option 2</option>
+                            <option value="option3">option 3</option>
+                        </select>
                     </div>
                 </div>
 
@@ -82,11 +95,11 @@
 
 
                 <div class="item item3">
-                    Left plot
+                    <p>[Placeholder 1]</p>
                 </div>
 
                 <div class="item item4">
-                    Right plot
+                    <p>[Placeholder 2]</p>
                 </div>
             </div>
         </main>
